@@ -8,7 +8,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -32,6 +31,7 @@ public class Evento {
 
     private int numeroMaxPartecipanti;
 
-    @ManyToMany
-    private List<Utente> utentiPartecipanti;
+    @ManyToOne
+    @JoinColumn(name = "organizzatoreEvento_id")
+    private Utente organizzatoreEvento;
 }
