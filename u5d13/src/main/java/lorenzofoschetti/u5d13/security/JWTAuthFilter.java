@@ -39,13 +39,13 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         String userId = jwtTools.extractIdFromToken(accessToken);
         Utente currentUser = userService.findById(UUID.fromString(userId));
 
-        // 4.2 Trovato l'utente posso associarlo al Security Context, praticamente questo equivale ad 'associare' l'utente autenticato alla richiesta corrente
+
         Authentication authentication = new UsernamePasswordAuthenticationToken(currentUser, null, currentUser.getAuthorities());
-        // Il terzo parametro è OBBLIGATORIO se si vuol poter usare i vari @PreAuthorize perché esso contiene la lista dei ruoli dell'utente
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         filterChain.doFilter(request, response);
 
-        //se è tutto ok mandiamo un 401, ma dobbiamo ancora gestire questa cosa
+
     }
 }
