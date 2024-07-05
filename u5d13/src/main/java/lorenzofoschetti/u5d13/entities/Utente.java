@@ -36,12 +36,14 @@ public class Utente implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public Utente(Role role, String name, String surname, String password, String email) {
-        this.role = role.USER;
+    public Utente(String name, String surname, String password, String email) {
+
         this.name = name;
         this.surname = surname;
-        this.password = password;
         this.email = email;
+        this.password = password;
+
+        this.role = role.USER;
     }
 
     @Override

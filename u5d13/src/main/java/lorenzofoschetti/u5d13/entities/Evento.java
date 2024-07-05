@@ -34,4 +34,13 @@ public class Evento {
     @ManyToOne
     @JoinColumn(name = "organizzatoreEvento_id")
     private Utente organizzatoreEvento;
+
+    public Evento(String titolo, String descrizione, String luogo, LocalDate data, int numeroMaxPartecipanti, Utente organizzatoreEvento) {
+        this.titolo = titolo;
+        this.descrizione = descrizione;
+        this.luogo = luogo;
+        this.data = data;
+        this.numeroMaxPartecipanti = numeroMaxPartecipanti;
+        this.organizzatoreEvento = organizzatoreEvento;
+    }
 }
